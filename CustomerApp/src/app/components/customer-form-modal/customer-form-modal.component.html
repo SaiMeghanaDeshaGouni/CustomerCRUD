@@ -1,0 +1,42 @@
+<span class="close" (click)="closeModal()">&times;</span>
+<div>
+    <div class="modal-content">
+        <h5 class="text-center">{{btnLabel}} New Customer</h5>
+        <form [formGroup]="customerForm" class="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div>
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" formControlName="firstName" class="form-control" />
+                    <span class="text-danger" *ngIf="(customerFormControl['firstName'].touched || submitted)
+                         && customerFormControl['firstName'].errors?.['required']">
+                        First Name is required
+                    </span>
+                </div>
+                <div>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" formControlName="lastName" class="form-control" />
+                    <span class="text-danger" *ngIf="(customerFormControl['lastName'].touched || submitted)
+                         && customerFormControl['lastName'].errors?.['required']">
+                        Last Name is required
+                    </span>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" formControlName="email" class="form-control" />
+                    <span class="text-danger" *ngIf="(customerFormControl['email'].touched || submitted)
+                         && customerFormControl['email'].errors?.['required']">
+                        Email is required
+                    </span>
+                    <span class="text-danger" *ngIf="(customerFormControl['email'].touched || submitted)
+                    && customerFormControl['email'].errors?.['email']">
+                        Please enter a valid email address.
+                    </span>
+                </div>
+                <div>
+                    <button type="submit" class="form-control mt-3">{{btnLabel}} Customer</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
